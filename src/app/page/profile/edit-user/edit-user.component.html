@@ -1,0 +1,58 @@
+<div>
+  <div class="card">
+    <p class="card-title text-center">Edit user</p>
+    <div ngClass="card-body">
+      <form class="container" [formGroup]="editForm" (ngSubmit)="editUser(editForm.value)" *ngIf="users">
+        <div class="form-group">
+          <label for="firstName">Name:</label>
+          <input type="text" class="form-control" formControlName="firstName" name="firstName" value="{{ users.firstName }}" required>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="editForm.controls.firstName.invalid && submitted">
+          <div *ngIf="editForm.controls.firstName.errors.required">firstname is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="login">NickName:</label>
+          <input type="text" class="form-control" formControlName="login" name="login" value="{{ users.login }}" required>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="editForm.controls.login.invalid && submitted">
+          <div *ngIf="editForm.controls.login.errors.required">login is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">PASSWORD*:</label>
+          <input class="form-control" formControlName="password" type="password" name="password" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="editForm.controls.password.invalid && submitted">
+          <div *ngIf="editForm.controls.password.errors.required">Password is required</div>
+          <div *ngIf="editForm.controls.password.errors.minlength">Password must be at least 5 characters</div>
+          <div *ngIf="editForm.controls['password'].hasError('hasCapitalCase')">Password must has capital case</div>
+          <div *ngIf="editForm.controls['password'].hasError('hasSpecialCharacters')">Password must has special characters</div>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="city" class="form-control" formControlName="city" name="city" value="{{ users.city }}" required>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="editForm.controls.city.invalid && submitted">
+          <div *ngIf="editForm.controls.city.errors.required">city is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contacts:</label>
+          <input type="contact" class="form-control" formControlName="contact" name="contact" value="{{ users.contact }}">
+        </div>
+
+        <div class="row form-button mt-4">
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary text-white login-button font-weight-bold">Edit</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

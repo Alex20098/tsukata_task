@@ -1,0 +1,62 @@
+<div>
+  <div class="card">
+    <p class="card-title text-center">Authentication</p>
+    <div ngClass="card-body">
+      <form class="container" [formGroup]="reg" (ngSubmit)="auth(reg.value)">
+        <div class="form-group">
+          <label for="firstName">Name*:</label>
+          <input type="text" class="form-control" formControlName="firstName" name="firstName" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="reg.controls.firstName.invalid && submitted">
+          <div *ngIf="reg.controls.firstName.errors.required">firstname is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="login">NickName*:</label>
+          <input type="text" class="form-control" formControlName="login" name="login" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="reg.controls.login.invalid && submitted">
+          <div *ngIf="reg.controls.login.errors.required">login is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City*:</label>
+          <input type="city" class="form-control" formControlName="city" name="city" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="reg.controls.city.invalid && submitted">
+          <div *ngIf="reg.controls.city.errors.required">city is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">PASSWORD*:</label>
+          <input class="form-control" formControlName="password" type="password" name="password" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="reg.controls.password.invalid && submitted">
+          <div *ngIf="reg.controls.password.errors.required">Password is required</div>
+          <div *ngIf="reg.controls.password.errors.minlength">Password must be at least 5 characters</div>
+          <div *ngIf="reg.controls['password'].hasError('hasCapitalCase')">Password must has capital case</div>
+          <div *ngIf="reg.controls['password'].hasError('hasSpecialCharacters')">Password must has special characters</div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contacts:</label>
+          <input type="contact" class="form-control" formControlName="contact" name="contact">
+        </div>
+
+        <div class="row form-button mt-4">
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary text-white login-button font-weight-bold">Sign Up</button>
+          </div>
+        </div>
+        <div class="text-center">
+          <a [routerLink]="[ '/login' ]" class="font-weight-bold">Return to the login page?</a>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="message">
+          Such account already exist
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

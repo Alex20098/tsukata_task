@@ -1,0 +1,26 @@
+<h2>User's data</h2>
+<button class="btn btn-primary" (click)="logOut()">LogOut</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">Login</th>
+      <th scope="col">City</th>
+      <th scope="col">Contacts</th>
+      <th scope="col">Change</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="users">
+    <tr>  
+      <th scope="row">User</th>
+      <td>{{ users.firstName }}</td>
+      <td>{{ users.login }}</td>
+      <td>{{ users.city }}</td>
+      <td>{{ users.contact }}</td>
+      <td><a (click)="updateUser()"><i class="material-icons">edit</i></a></td>
+      <td><a (click)="deleteUser()"><i class="material-icons">delete</i></a></td>
+    </tr>
+  </tbody>
+</table>
